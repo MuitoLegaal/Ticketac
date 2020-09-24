@@ -71,7 +71,7 @@ router.get('/signup', async function(req, res, next) {
   
     res.redirect('/home')
   } else {
-    res.redirect('/')
+    res.redirect('login')
   }
 });
 
