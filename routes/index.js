@@ -41,8 +41,8 @@ router.get('/', function(req, res, next) {
 
 /* GET main page */
 router.get('/home', function(req, res, next){
-  if(req.session.user == null)
-  {res.redirect('/')} 
+ // if(req.session.user == null)
+//{res.redirect('/')} 
     res.render('home')})
 
 /* POST sign-up page */
