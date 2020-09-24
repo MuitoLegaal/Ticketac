@@ -46,11 +46,9 @@ router.get('/home', function(req, res, next){
     res.render('home')})
 
 /* POST sign-up page */
-router.get('/sign-up', async function(req, res, next) {
+router.post('/sign-up', async function(req, res, next) {
   var searchUser = await userModel.findOne({
     email: req.body.email})
-
-    console.log("searchuser", searchUser);
   
   if(!searchUser){
     var newUser = new userModel({
@@ -60,8 +58,6 @@ router.get('/sign-up', async function(req, res, next) {
       password: req.body.password})
   
     var newUserSave = await newUser.save();
-  
-console.log("newusersave", newUserSave)
 
     req.session.user = {
       name: newUserSave.name,
@@ -75,7 +71,7 @@ console.log("newusersave", newUserSave)
 });
 
 /* POST sign-in page */
-router.get('/sign-in', async function(req, res, next) {
+router.post('/sign-in', async function(req, res, next) {
   var searchUser = await userModel.findOne({
     email: req.body.email,
     password: req.body.password
