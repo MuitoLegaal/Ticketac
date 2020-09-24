@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
 // useNewUrlParser ;)
 var options = {
@@ -23,8 +22,7 @@ var journeySchema = mongoose.Schema({
   arrival: String,
   date: Date,
   departureTime: String,
-  price: Number, });
-
+  price: Number });
 var journeyModel = mongoose.model('journey', journeySchema);
 
 var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"]
@@ -34,15 +32,12 @@ var userSchema = mongoose.Schema({
   name: String,
   firstname: String,
   email: String,
-  password: String});
-
+  password: String });
 var userModel = mongoose.model('users', userSchema);
-
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('login');
-});
+  res.render('login'); });
 
 /* GET main page */
 router.get('/home', function(req, res, next){
@@ -50,10 +45,12 @@ router.get('/home', function(req, res, next){
   {res.redirect('/')} 
     res.render('home')})
 
-/* POST signup page */
-router.get('/signup', async function(req, res, next) {
+/* POST sign-up page */
+router.get('/sign-up', async function(req, res, next) {
   var searchUser = await userModel.findOne({
     email: req.body.email})
+
+    console.log("searchuser", searchUser);
   
   if(!searchUser){
     var newUser = new userModel({
@@ -64,6 +61,8 @@ router.get('/signup', async function(req, res, next) {
   
     var newUserSave = await newUser.save();
   
+console.log("newusersave", newUserSave)
+
     req.session.user = {
       name: newUserSave.name,
       id: newUserSave._id,}
@@ -71,12 +70,12 @@ router.get('/signup', async function(req, res, next) {
   
     res.redirect('/home')
   } else {
-    res.redirect('login')
+    res.render('login')
   }
 });
 
-/* POST signin page */
-router.get('/signin', async function(req, res, next) {
+/* POST sign-in page */
+router.get('/sign-in', async function(req, res, next) {
   var searchUser = await userModel.findOne({
     email: req.body.email,
     password: req.body.password
