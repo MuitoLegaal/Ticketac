@@ -11,17 +11,16 @@ var userModel = require('../models/users');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+
   if(req.session.user != null)
   {res.redirect('/home')} 
+
   res.render('login'); });
 
 /* GET main page */
 router.get('/home', function(req, res, next){
   if(req.session.user == null)
   {res.redirect('/')}
-
-
-
 
   res.render('home')})
 
@@ -53,11 +52,11 @@ router.post('/sign-up', async function(req, res, next) {
 
 /* POST sign-in page */
 router.post('/sign-in', async function(req, res, next) {
-  var searchUser = await userModel.findOne({
-    email: req.body.email,
-    password: req.body.password
-  })
 
+  var searchUser = await userModel.findOne({email: req.body.email, password: req.body.password})
+
+
+  
   if(searchUser!= null){
     req.session.user = {
       email: searchUser.email,
@@ -69,5 +68,14 @@ router.post('/sign-in', async function(req, res, next) {
   }
 });
 
+router.post('/home', async function(req, res, next) {
+
+
+
+  // res.redirect('/error')
+
+  // res.redirect('/available')
+
+});
 
 module.exports = router;
