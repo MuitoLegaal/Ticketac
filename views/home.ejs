@@ -12,12 +12,33 @@
 
 
 
-      <div class="home">
+      <div class="container">
 
         <div class="row">
 
-         <p>HOME</p>
-          
+          <div class='header d-flex align-items-center col-12'>
+
+  
+            <img class ='train mx-2' src='/images/train.png' width="50px">
+            <h2 class='mx-2'>Ticketac</h2>
+
+            <div class='d-flex justify-content-end col-xs-6 col-12'>
+              <span class="mx-3">Connection<span>
+              <span class="mx-3">My last trips</span>
+            </div>
+
+          </div>
+
+
+        <div class="row">
+          <form action="/sign-in" method="POST">
+            <div class="form-group">
+              <input name="startingpoint" type="text" class="form-control" placeholder="From">
+              <input name="endingpoint" type="text" class="form-control" placeholder="To">
+              <button type="submit" class="btn btn-danger">Go !</button>
+            </div>
+          </form>
+        </div>
 
                <!-- Sticky Footer -->
                <footer class="sticky-footer">

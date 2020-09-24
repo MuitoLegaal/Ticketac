@@ -20,7 +20,7 @@ router.get('/home', function(req, res, next){
   if(req.session.user == null)
   {res.redirect('/')}
 
-  // if()
+
 
 
   res.render('home')})
