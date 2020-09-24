@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var userModel = require('../models/users');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+
+
+
+/* GET logout page */
+router.get('/logout', function(req, res, next) {
+  req.session.user = null;
+  res.redirect('/') });
 
 module.exports = router;

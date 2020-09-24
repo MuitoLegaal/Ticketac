@@ -21,8 +21,8 @@
             <h2 class='mx-2'>Ticketac</h2>
 
             <div class='d-flex justify-content-end col-xs-6 col-12'>
-              <span class="mx-3">Connection<span>
-              <span class="mx-3">My last trips</span>
+              <a href="/?type=pull" class="mx-3">Connection<span>
+              <a href="/mylasttrips?type=pull" class="mx-3">My last trips</span>
             </div>
 
           </div>
@@ -56,7 +56,7 @@
             <div class="formArea col-xs-12 col-md-4">
               <h4 class="titleForm">Sign-up :</h4>
 
-              <form action="/sign-up" method="POST">
+              <form action="/users/sign-up" method="POST">
                 <div class="form-group">
                   <input name="name" type="text" class="form-control" placeholder="Name">
                 </div>
