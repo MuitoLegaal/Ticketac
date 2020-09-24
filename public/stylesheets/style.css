@@ -1,26 +1,25 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: -webkit-linear-gradient(top, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);;
+  background: linear-gradient(to bottom, #7db9e8 0%,#1e5799 100%);
 }
 
-a {
-  color: #00B7FF;
+
+footer {
+  text-align:center;
+  position: fixed;
+  bottom:0;
+  width:100%;
+  display:inline-block;
+  vertical-align:top;
+  font-size:13px;
 }
 
-footer.sticky-footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: absolute;
+.header {
+  margin: 0;
+  top: 0;
+  left: 0;
   right: 0;
-  bottom: 0;
-  width: calc(100% - 90px);
-  height: 80px;
+  height: 95px;
+  background-color: white;
 }
-.footer {
-left: 0;
-bottom: 0;
-width: 100%;
-color: black;
-text-align: center;
