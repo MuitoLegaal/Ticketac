@@ -19,10 +19,9 @@ router.get('/', function(req, res, next) {
 
 /* GET main page */
 router.get('/home', function(req, res, next){
-  if(req.session.user == null)
-  {res.redirect('/')}
-
-  res.render('home')})
+ if(req.session.user == null)
+{res.redirect('/')} 
+    res.render('home')})
 
 /* POST sign-up page */
 router.post('/sign-up', async function(req, res, next) {
@@ -55,8 +54,8 @@ router.post('/sign-in', async function(req, res, next) {
 
   var searchUser = await userModel.findOne({email: req.body.email, password: req.body.password})
 
+  console.log(searchUser);
 
-  
   if(searchUser!= null){
     req.session.user = {
       email: searchUser.email,
@@ -70,11 +69,25 @@ router.post('/sign-in', async function(req, res, next) {
 
 router.post('/home', async function(req, res, next) {
 
-
-
   // res.redirect('/error')
 
-  // res.redirect('/available')
+  res.redirect('/available')
+
+});
+
+router.get('/error', async function(req, res, next) {
+
+
+
+  res.render('/error')
+
+});
+
+
+router.get('/available', async function(req, res, next) {
+
+
+  res.render('/available')
 
 });
 

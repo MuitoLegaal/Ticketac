@@ -9,8 +9,6 @@ footer {
   position: fixed;
   bottom:0;
   width:100%;
-  display:inline-block;
-  vertical-align:top;
   font-size:13px;
 }
 
@@ -21,4 +19,20 @@ footer {
   right: 0;
   height: 95px;
   background-color: white;
+}
+
+.connection {
+  color: red;
+  font-weight: bold
+}
+
+.mylasttrips {
+  color: #282828;
+  font-weight: bold
+}
+
+.error-message {
+  color: #F7F5F4;
+  font-size: 20px
+
 }
