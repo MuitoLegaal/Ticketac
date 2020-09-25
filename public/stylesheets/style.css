@@ -1,7 +1,9 @@
 body {
   height: 100vh;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background: linear-gradient(to bottom, #78c1fa 20%,#064791 100%);
+  background: url(/images/giiif.gif);
+  background-position: center center;
+  background-size: cover;
 }
 
 
