@@ -43,16 +43,60 @@
                 </thead>
                 <tbody>
 
-                  <% for (let i = 0; i < journey.length; i++) { %>
+                  <% var totalCmd = 0;
+                    for (let i = 0; i < journey.length; i++) { %>
                     <tr>
-                      <th scope="row"><%=[i]+1%></th>
+                      <th scope="row"><%=i+1%></th>
                       <td><%=journey[i].departure%>/<%=journey[i].arrival%></td>
                       <td><%=journey[i].date%></td>
                       <td><%=journey[i].departureTime%></td>
                       <td><%=journey[i].price%>€</td>
+                      <% totalCmd += Number(journey[i].price) %>
                      
                     </tr>
-                <% } %>
+
+                    <% }  %>
+
+                    <div>
+                    <tr class='bg-danger'>
+                      <th scope="row">Total</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td ><%=totalCmd%>€</td>
+                     
+                    </tr>
+
+                    <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+             Confirm
+                </a>
+
+              </div>
+                
+
+               
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirmation de commande</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                      <p>Souhaitez-vous confirmer votre commande ?</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary">Confirmer</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                   
                 </tbody>
               </table>

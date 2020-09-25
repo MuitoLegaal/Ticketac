@@ -69,6 +69,7 @@ router.post('/sign-in', async function(req, res, next) {
 
 router.post('/home', async function(req, res, next) {
 
+
 res.render('home')
 
 });
@@ -88,9 +89,9 @@ var journeyAvailables = await journeyModel.find({date:req.body.date, departure: 
 console.log(journeyAvailables);
 
 
-if (!journeyAvailables) {
+if (journeyAvailables == false) {
   console.log('ok')
-  res.render("error")
+  res.render("oops")
 }
 else{
   console.log('okok')
@@ -98,11 +99,31 @@ else{
 }
 });
 
-router.get('/mytickets', async function(req, res, next) {
 
-  req.session.journey = [];
+router.get('/mytickets', function(req, res, next) {
 
-  req.session.journey.push({
+  
+  if(req.session.journey == undefined){
+    req.session.journey = []
+  };
+
+  var alreadyExist = false;
+
+  for (let i = 0; i < req.session.journey.length; i++) {
+    
+
+
+  if (req.session.journey[i].departure == req.query.departure
+      && req.session.journey[i].arrival == req.query.arrival
+      && req.session.journey[i].departureTime == req.query.departureTime ) {
+    alreadyExist=true;
+  }
+
+};
+
+  if(alreadyExist==false) {
+
+    req.session.journey.push({
     departure: req.query.departure,
     arrival: req.query.arrival, 
     date: req.query.date, 
@@ -110,16 +131,32 @@ router.get('/mytickets', async function(req, res, next) {
     price: req.query.price, 
     quantity:1});
 
+    }
+
+    
+
   console.log('ok', req.session.journey);
 
-  res.render('mytickets',  {journey:req.session.journey})
+  res.render('mytickets',  {journey: req.session.journey})
 
 });
+
+router.post('popup')
+
 
 router.get('/lasttrips', async function(req, res, next) {
 
 
+
   res.render('lastrips')
+
+});
+
+router.get('/logout', async function(req, res, next) {
+
+req.session.destroy();
+
+  res.render('login')
 
 });
 
