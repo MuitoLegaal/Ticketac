@@ -9,12 +9,14 @@ var userModel = require('../models/users');
 // var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"]
 // var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
   if(req.session.user != null)
   {res.redirect('/home')} 
 
+  
   res.render('login'); });
 
 /* GET main page */
@@ -54,7 +56,6 @@ router.post('/sign-in', async function(req, res, next) {
 
   var searchUser = await userModel.findOne({email: req.body.email, password: req.body.password})
 
-
   if(searchUser!= null){
     req.session.user = {
       email: searchUser.email,
@@ -68,13 +69,7 @@ router.post('/sign-in', async function(req, res, next) {
 
 router.post('/home', async function(req, res, next) {
 
-  // res.redirect('/error')
-
-  journeyAvailables = await journeyModel.find({date:req.body.date, departure: req.body.departure, arrival: req.body.arrival})
-  
-  console.log(journeyAvailables);
-
-  res.render('home')
+res.render('home')
 
 });
 
@@ -88,21 +83,36 @@ router.get('/error', async function(req, res, next) {
 
 router.post('/available', async function(req, res, next) {
 
-var journeyAvailables = await journeyModel.find({date:req.body.date, departure: req.body.departure, arrival: req.body.arrival})
-
-console.log(req.body);
+var journeyAvailables = await journeyModel.find({date:req.body.date, departure: req.body.departure, arrival: req.body.arrival});
 
 console.log(journeyAvailables);
 
-  res.render('available', {journeyAvailables})
 
+if (!journeyAvailables) {
+  console.log('ok')
+  res.render("error")
+}
+else{
+  console.log('okok')
+  res.render("available",{journeyAvailables})
+}
 });
 
 router.get('/mytickets', async function(req, res, next) {
 
-  
+  req.session.journey = [];
 
-  res.render('mytickets')
+  req.session.journey.push({
+    departure: req.query.departure,
+    arrival: req.query.arrival, 
+    date: req.query.date, 
+    departureTime: req.query.departureTime,
+    price: req.query.price, 
+    quantity:1});
+
+  console.log('ok', req.session.journey);
+
+  res.render('mytickets',  {journey:req.session.journey})
 
 });
 

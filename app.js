@@ -14,6 +14,8 @@ var session = require("express-session");
 var app = express();
 var session = require("express-session");
 
+
+
 // view engine setup
 
 app.use(
@@ -51,5 +53,11 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.locals.dateFormat = function(date){
+  var newDate = new Date(date);
+  var format = newDate.getDate()+'/'+(newDate.getMonth()+1)+'/'+newDate.getFullYear();
+  return format;
+}
 
 module.exports = app;
