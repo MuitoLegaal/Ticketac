@@ -12,6 +12,8 @@
 
 
 
+
+
     <div class="container">
 
       <div class="row">
@@ -31,21 +33,21 @@
         </div>
            
         <form class="d-flex flex-column mx-auto mt-5">    
-          <p class='error-message'> My tickets </p>
+          <p class='error-message'> Tickets available</p>
         </form>
 
       </div> <!-- div class row -->
 
-      <div class="d-flex flex-column">
+      <div class="d-flex flex-column bg-white rounded">
 
                 <% for (var i = 0; i < journeyAvailables.length; i++) { %>
-              
-                  <p ><%=journeyAvailables[i].departure%>/<%=journeyAvailables[i].arrival%></p>
-                  <p >Train departure at: <%=journeyAvailables[i].departureTime%></p>
-                  <p ><%=journeyAvailables[i].price%>€</p>
+              <div class="d-flex justify-content-between p-5">
+                  <span><%=journeyAvailables[i].departure%>/<%=journeyAvailables[i].arrival%></span>
+                  <span>Train departure at: <%=journeyAvailables[i].departureTime%></span>
+                  <span><%=journeyAvailables[i].price%>€</span>
                   <a href="/mytickets?departure=<%=journeyAvailables[i].departure%>&arrival=<%=journeyAvailables[i].arrival%>&date=<%=journeyAvailables[i].date%>&departureTime=<%=journeyAvailables[i].departureTime%>&price=<%=journeyAvailables[i].price%>" type="submit" class="btn btn-danger">OK</a>
-
-
+              </div>
+                <% } %>
                <!-- Sticky Footer -->
       <footer class="sticky-footer">
           <span>© 2019 LaCapsule</span>
@@ -55,7 +57,7 @@
       
     </div> <!-- container -->
 
-
+  
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

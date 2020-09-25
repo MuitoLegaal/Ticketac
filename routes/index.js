@@ -98,7 +98,7 @@ else{
 }
 });
 
-router.get('/mytickets', async function(req, res, next) {
+router.get('/mytickets', function(req, res, next) {
 
   req.session.journey = [];
 
