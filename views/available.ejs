@@ -35,15 +35,17 @@
              
               <p class='error-message'> My tickets </p>
 
-              <div class='d-flex  block-rectangle'>
+              <div class='d-flex block-rectangle'>
             
 
-                
+                <% for (let i = 0; i < journeyAvailables.length; i++) { %>
+              
+                  <p ><%=journeyAvailables[i].departure%>/<%=journeyAvailables[i].arrival%></p>
+                  <p >Train departure at: <%=journeyAvailables[i].departureTime%></p>
+                  <p ><%=journeyAvailables[i].price%>€</p>
+                  <button type="submit" class="btn btn-danger">Home</button>
 
-                <p >Paris/Lille</p>
-                <p >Train departure at:</p>
-                <p >€</p>
-                <button type="submit" class="btn btn-danger">Home</button>
+                <% } %>
           
 
                <!-- Sticky Footer -->

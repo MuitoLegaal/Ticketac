@@ -54,7 +54,6 @@ router.post('/sign-in', async function(req, res, next) {
 
   var searchUser = await userModel.findOne({email: req.body.email, password: req.body.password})
 
-  console.log(searchUser);
 
   if(searchUser!= null){
     req.session.user = {
@@ -71,24 +70,48 @@ router.post('/home', async function(req, res, next) {
 
   // res.redirect('/error')
 
-  res.redirect('/available')
+  journeyAvailables = await journeyModel.find({date:req.body.date, departure: req.body.departure, arrival: req.body.arrival})
+  
+  console.log(journeyAvailables);
+
+  res.render('home')
 
 });
 
 router.get('/error', async function(req, res, next) {
 
 
+  res.render('error')
 
-  res.render('/error')
+});
+
+
+router.post('/available', async function(req, res, next) {
+
+var journeyAvailables = await journeyModel.find({date:req.body.date, departure: req.body.departure, arrival: req.body.arrival})
+
+console.log(req.body);
+
+console.log(journeyAvailables);
+
+  res.render('available', {journeyAvailables})
 
 });
 
+router.get('/mytickets', async function(req, res, next) {
 
-router.get('/available', async function(req, res, next) {
+  
 
-
-  res.render('/available')
+  res.render('mytickets')
 
 });
+
+router.get('/lasttrips', async function(req, res, next) {
+
+
+  res.render('lastrips')
+
+});
+
 
 module.exports = router;

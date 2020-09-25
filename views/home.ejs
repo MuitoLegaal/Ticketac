@@ -31,11 +31,13 @@
             </div>
 
            
-            <form class="d-flex mx-auto mt-5" action="/sign-in" method="POST">
+            <form class="d-flex mx-auto mt-5" action="/available" method="POST">
              
-              <input name="startingpoint" type="text" class="form-control" placeholder="From">
-              <input name="endingpoint" type="text" class="form-control" placeholder="To">
-              <button type="submit" class="btn btn-danger">Go !</button>
+              <input name="departure" type="text" class="form-control" placeholder="From">
+              <input name="arrival" type="text" class="form-control" placeholder="To">
+              <input name="date" type="date" class="form-control">
+
+              <button type="submit" class="btn btn-danger">Go</button>
               
             </form>
           
