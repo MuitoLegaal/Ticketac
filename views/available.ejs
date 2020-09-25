@@ -12,50 +12,54 @@
 
 
 
-      <div class="container">
+    <div class="container">
 
-        <div class="row">
+      <div class="row">
 
-            <div class="col-12 header d-flex justify-content-between align-items-center">
+        <div class="col-12 header d-flex justify-content-between align-items-center">
               
-              <div class="d-flex">
-                <img class ='train mx-2' src='/images/train.png' width="50px">
-                <h2 class='mx-2'>Ticketac</h2>
-              </div>
+          <div class="d-flex">
+            <img class ='train mx-2' src='/images/train.png' width="50px">
+            <h2 class='mx-2'>Ticketac</h2>
+          </div>
                
-              <div>
-                <span class="connection mx-3">Connection</span>
-                <span class="mylasttrips mx-3">My last trips</span>
-              </div>
+          <div>
+            <span class="connection mx-3">Connection</span>
+            <span class="mylasttrips mx-3">My last trips</span>
+          </div>
            
-            </div>
-
+        </div>
            
-            <form class="d-flex flex-column mx-auto mt-5">
-             
-              <p class='error-message'> My tickets </p>
+        <form class="d-flex flex-column mx-auto mt-5">    
+          <p class='error-message'> My tickets </p>
+        </form>
 
-              <div class='d-flex block-rectangle'>
-            
+      </div> <!-- div class row -->
 
-                <% for (let i = 0; i < journeyAvailables.length; i++) { %>
+      <div class="d-flex flex-column">
+
+          <% for (let i = 0; i < journeyAvailables.length; i++) { %>
               
-                  <p ><%=journeyAvailables[i].departure%>/<%=journeyAvailables[i].arrival%></p>
-                  <p >Train departure at: <%=journeyAvailables[i].departureTime%></p>
-                  <p ><%=journeyAvailables[i].price%>€</p>
-                  <button type="submit" class="btn btn-danger">Home</button>
+               <div class="d-flex align-items-center justify-content-around bg-light w-100 p-3 rounded ">
+                 <span ><%=journeyAvailables[i].departure%>/<%=journeyAvailables[i].arrival%></span>
+                 <span >Train departure at: <%=journeyAvailables[i].departureTime%></span>
+                 <span ><%=journeyAvailables[i].price%>€</span>
+                <a href="#" class="btn btn-primary">Go</a>
+              </div>
+                    
+          <% } %>
+                    
+      </div>
 
-                <% } %>
-          
 
                <!-- Sticky Footer -->
-               <footer class="sticky-footer">
-                    <span>© 2019 LaCapsule</span>
-              </footer>
+      <footer class="sticky-footer">
+          <span>© 2019 LaCapsule</span>
+      </footer>
 
 
-        </div>
-      </div>
+      
+    </div> <!-- container -->
 
 
 
